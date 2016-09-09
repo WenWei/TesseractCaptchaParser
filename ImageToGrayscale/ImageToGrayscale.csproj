@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -44,16 +45,87 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tesseract, Version=0.0.0.0, Culture=neutral, PublicKeyToken=ebeb3d86bef60cbe, processorArchitecture=MSIL">
+      <HintPath>..\packages\Tesseract.3.2.0.0-alpha1\lib\net451\Tesseract.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitmapUtils.cs" />
+    <Compile Include="Filters\CharRebuildFilter.cs" />
+    <Compile Include="Filters\FilterOptionsControls\CharRebuildFilterOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filters\FilterOptionsControls\CharRebuildFilterOptions.Designer.cs">
+      <DependentUpon>CharRebuildFilterOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HackControls\SelectablePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SerializableUtils.cs" />
+    <Compile Include="FileUtils.cs" />
+    <Compile Include="Filters\BinarizationFilter.cs" />
+    <Compile Include="Filters\NoiseFilter.cs" />
+    <Compile Include="Filters\FilterOptionsControls\RemoveFrameFilterOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filters\FilterOptionsControls\RemoveFrameFilterOptions.Designer.cs">
+      <DependentUpon>RemoveFrameFilterOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\RemoveFrameFilter.cs" />
+    <Compile Include="Filters\FilterOptionsControls\BinarizationFilterOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filters\FilterOptionsControls\BinarizationFilterOptions.Designer.cs">
+      <DependentUpon>BinarizationFilterOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\IFilter.cs" />
+    <Compile Include="Filters\CorrodeFilter.cs" />
+    <Compile Include="Filters\ExpendFilter.cs" />
+    <Compile Include="Filters\GrayFilter.cs" />
+    <Compile Include="Filters\FilterOptionsControls\GrayFilterOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filters\FilterOptionsControls\GrayFilterOptions.Designer.cs">
+      <DependentUpon>GrayFilterOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\NegativeFilter.cs" />
+    <Compile Include="Filters\ResizeFilter.cs" />
+    <Compile Include="Filters\FilterOptionsControls\ResizeFilterOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Filters\FilterOptionsControls\ResizeFilterOptions.Designer.cs">
+      <DependentUpon>ResizeFilterOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PointBitmap.cs" />
+    <Compile Include="LockBitmap.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="HttpUtils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Filters\FilterOptionsControls\BinarizationFilterOptions.resx">
+      <DependentUpon>BinarizationFilterOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filters\FilterOptionsControls\CharRebuildFilterOptions.resx">
+      <DependentUpon>CharRebuildFilterOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filters\FilterOptionsControls\GrayFilterOptions.resx">
+      <DependentUpon>GrayFilterOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filters\FilterOptionsControls\RemoveFrameFilterOptions.resx">
+      <DependentUpon>RemoveFrameFilterOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Filters\FilterOptionsControls\ResizeFilterOptions.resx">
+      <DependentUpon>ResizeFilterOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,6 +135,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -72,9 +145,54 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="tessdata\COPYING">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\eng.cube.bigrams">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\eng.cube.fold">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\eng.cube.lm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\eng.cube.nn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\eng.cube.params">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\eng.cube.size">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\eng.cube.word-freq">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\eng.tesseract_cube.nn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="tessdata\eng.traineddata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TextFile1.txt" />
+    <Content Include="x64\liblept172.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x64\libtesseract304.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\liblept172.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\libtesseract304.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
