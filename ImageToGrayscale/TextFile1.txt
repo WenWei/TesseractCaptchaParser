@@ -1,0 +1,72 @@
+﻿        private void btnConvertToGrayscale_Click(object sender, EventArgs e)
+        {
+            if (_bitmap == null) throw new NullReferenceException("Raw image cannot be null.");
+
+            //_bitmapGrayscale=new Bitmap(_bitmap.Width, _bitmap.Height);
+            //for (int i = 0; i < _bitmap.Width; i++)
+            //{
+            //    for (int x = 0; x < _bitmap.Height; x++)
+            //    {
+            //        Color c = _bitmap.GetPixel(i, x);
+            //        int grayScale = (int)((c.R * 0.3) + (c.G * 0.59) + (c.B * 0.11));
+            //        Color nc = Color.FromArgb(c.A, grayScale, grayScale, grayScale);
+            //        _bitmapGrayscale.SetPixel(i, x, nc);
+            //    }
+            //}
+
+            _bitmapGrayscale = BitmapUtils.GrayImage(_bitmap, GrayAlgorithmType.WeightedAverage);
+            pictureBoxGrayscale.Image = _bitmapGrayscale;
+        }
+
+        private void btnConvertToReverse_Click(object sender, EventArgs e)
+        {
+            if (_bitmapGrayscale == null) throw new NullReferenceException("Grayscale image cannot be null.");
+
+            _bitmapReverse = new Bitmap(_bitmapGrayscale.Width, _bitmapGrayscale.Height);
+
+            var target = new LockBitmap(_bitmapGrayscale);
+
+
+            //remove noise
+            Color black = Color.FromArgb(255, 0, 0, 0);
+            Color white = Color.FromArgb(255, 255, 255, 255);
+            target.LockBits();
+            for (int i = 0; i < target.Width; i++)
+            {
+                for (int x = 0; x < target.Height; x++)
+                {
+                    Color c = target.GetPixel(i, x);
+                    Color nc;
+                    if (x <= 4 || x >= 15 || i <= 3 || i >= 36 || i == 11 || i == 19 || i == 27)
+                        //if(x <= 17 || x >= 44 || i <= 14 || i >= 150 || i == 35 || i == 56 || i == 83)
+                    {
+                        nc = white;
+                    }
+                    else
+                    {
+                        int average = (int) ((c.R + c.G + c.B)/3);
+                        if (average < 127)
+                        {
+                            nc = black;
+                        }
+                        else
+                        {
+                            nc = white;
+                        }
+                    }
+                    _bitmapReverse.SetPixel(i, x, nc);
+                }
+            }
+            target.UnlockBits();
+
+            var size = new Size(_bitmapReverse.Width*3, _bitmapReverse.Height*3);
+            _bitmapReverse = BitmapUtils.ResizeImage(_bitmapReverse, size);
+            _bitmapReverse = BitmapUtils.MedianFilter(_bitmapReverse, 9);
+            //pictureBoxReverse.Image = _bitmapReverse;
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            lblThreshold.Text = trackBar1.Value.ToString();
+            btnConvertToReverse_Click(sender, e);
+        }
