@@ -40,8 +40,6 @@
             this.lblHeight = new System.Windows.Forms.Label();
             this.lblWidth = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnLoadProtobuf = new System.Windows.Forms.Button();
-            this.btnSaveProtobuf = new System.Windows.Forms.Button();
             this.btnLoadFilters = new System.Windows.Forms.Button();
             this.btnSaveFilters = new System.Windows.Forms.Button();
             this.btnMoveDown = new System.Windows.Forms.Button();
@@ -208,8 +206,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnLoadProtobuf);
-            this.groupBox2.Controls.Add(this.btnSaveProtobuf);
             this.groupBox2.Controls.Add(this.btnLoadFilters);
             this.groupBox2.Controls.Add(this.btnSaveFilters);
             this.groupBox2.Controls.Add(this.btnMoveDown);
@@ -228,26 +224,6 @@
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Step 2. Add filters";
-            // 
-            // btnLoadProtobuf
-            // 
-            this.btnLoadProtobuf.Location = new System.Drawing.Point(39, 600);
-            this.btnLoadProtobuf.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.btnLoadProtobuf.Name = "btnLoadProtobuf";
-            this.btnLoadProtobuf.Size = new System.Drawing.Size(182, 46);
-            this.btnLoadProtobuf.TabIndex = 16;
-            this.btnLoadProtobuf.Text = "Load";
-            this.btnLoadProtobuf.UseVisualStyleBackColor = true;
-            // 
-            // btnSaveProtobuf
-            // 
-            this.btnSaveProtobuf.Location = new System.Drawing.Point(41, 540);
-            this.btnSaveProtobuf.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.btnSaveProtobuf.Name = "btnSaveProtobuf";
-            this.btnSaveProtobuf.Size = new System.Drawing.Size(182, 46);
-            this.btnSaveProtobuf.TabIndex = 15;
-            this.btnSaveProtobuf.Text = "Save";
-            this.btnSaveProtobuf.UseVisualStyleBackColor = true;
             // 
             // btnLoadFilters
             // 
@@ -321,7 +297,7 @@
             this.listBoxFilter.Location = new System.Drawing.Point(41, 112);
             this.listBoxFilter.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.listBoxFilter.Name = "listBoxFilter";
-            this.listBoxFilter.Size = new System.Drawing.Size(502, 412);
+            this.listBoxFilter.Size = new System.Drawing.Size(502, 724);
             this.listBoxFilter.TabIndex = 8;
             this.listBoxFilter.SelectedIndexChanged += new System.EventHandler(this.listBoxFilter_SelectedIndexChanged);
             // 
@@ -584,8 +560,6 @@
         private System.Windows.Forms.Button btnLoadFilters;
         private System.Windows.Forms.Button btnSaveFilters;
         private System.Windows.Forms.Panel panelRaw;
-        private System.Windows.Forms.Button btnLoadProtobuf;
-        private System.Windows.Forms.Button btnSaveProtobuf;
     }
 }
 
