@@ -2,7 +2,7 @@ Image to text recognition using Tesseract-OCR
 ---------------------------------------------
 
 
-![ScreenShot](./ScreenShotS/01.png)
+![ScreenShot](./screenshots/01.png)
 
 ## Quick start
 
