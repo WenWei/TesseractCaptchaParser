@@ -1,4 +1,5 @@
 ﻿using ImageToGrayscale.Filters;
+using OcrPreprocessorLib.Preprocessor.Filters;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Schema;
+using OcrPreprocessorLib;
 using Tesseract;
 
 namespace ImageToGrayscale
@@ -34,16 +36,7 @@ namespace ImageToGrayscale
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //var _filterTypes = (from type in System.Reflection.Assembly.GetExecutingAssembly().GetTypes()
-            //                    where typeof(IFilter).IsAssignableFrom(type) && type.IsInterface == false
-            //                    select type).ToList();
-
-            //for(int i = 0; i < _filterTypes.Count; i++)
-            //{
-            //    var f = (IFilter)Activator.CreateInstance(_filterTypes[i]);
-            //    cmbFilter.Items.Add(f);
-            //}
-            var filters = (from type in System.Reflection.Assembly.GetExecutingAssembly().GetTypes()
+            var filters = (from type in System.Reflection.Assembly.GetAssembly(typeof(IFilter)).GetTypes()
                                 where typeof(IFilter).IsAssignableFrom(type) && type.IsInterface == false
                                 select  (IFilter)Activator.CreateInstance(type)).ToArray();
             cmbFilter.Items.AddRange(filters);
@@ -223,7 +216,7 @@ namespace ImageToGrayscale
             var bitmap = _bitmap.Clone(new Rectangle(0, 0, _bitmap.Width, _bitmap.Height), _bitmap.PixelFormat);
             foreach(IFilter filter in listBoxFilter.Items)
             {
-                bitmap = filter.Execute(bitmap);
+                bitmap = filter.Apply(bitmap);
             }
             _bitmapApplyFilters = bitmap;
             pictureBoxApplyFilters.Image = bitmap;
@@ -455,5 +448,6 @@ namespace ImageToGrayscale
 
         #endregion
 
+       
     }
 }

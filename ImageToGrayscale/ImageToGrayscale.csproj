@@ -51,54 +51,40 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BitmapUtils.cs" />
-    <Compile Include="Filters\CharRebuildFilter.cs" />
-    <Compile Include="Filters\FilterOptionsControls\CharRebuildFilterOptions.cs">
+    <Compile Include="FilterOptionsControls\BinarizationFilterOptions.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Filters\FilterOptionsControls\CharRebuildFilterOptions.Designer.cs">
+    <Compile Include="FilterOptionsControls\BinarizationFilterOptions.Designer.cs">
+      <DependentUpon>BinarizationFilterOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FilterOptionsControls\CharRebuildFilterOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FilterOptionsControls\CharRebuildFilterOptions.Designer.cs">
       <DependentUpon>CharRebuildFilterOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FilterOptionsControls\GrayFilterOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FilterOptionsControls\GrayFilterOptions.Designer.cs">
+      <DependentUpon>GrayFilterOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FilterOptionsControls\RemoveFrameFilterOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FilterOptionsControls\RemoveFrameFilterOptions.Designer.cs">
+      <DependentUpon>RemoveFrameFilterOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FilterOptionsControls\ResizeFilterOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FilterOptionsControls\ResizeFilterOptions.Designer.cs">
+      <DependentUpon>ResizeFilterOptions.cs</DependentUpon>
     </Compile>
     <Compile Include="HackControls\SelectablePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SerializableUtils.cs" />
     <Compile Include="FileUtils.cs" />
-    <Compile Include="Filters\BinarizationFilter.cs" />
-    <Compile Include="Filters\NoiseFilter.cs" />
-    <Compile Include="Filters\FilterOptionsControls\RemoveFrameFilterOptions.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Filters\FilterOptionsControls\RemoveFrameFilterOptions.Designer.cs">
-      <DependentUpon>RemoveFrameFilterOptions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Filters\RemoveFrameFilter.cs" />
-    <Compile Include="Filters\FilterOptionsControls\BinarizationFilterOptions.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Filters\FilterOptionsControls\BinarizationFilterOptions.Designer.cs">
-      <DependentUpon>BinarizationFilterOptions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Filters\IFilter.cs" />
-    <Compile Include="Filters\CorrodeFilter.cs" />
-    <Compile Include="Filters\ExpendFilter.cs" />
-    <Compile Include="Filters\GrayFilter.cs" />
-    <Compile Include="Filters\FilterOptionsControls\GrayFilterOptions.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Filters\FilterOptionsControls\GrayFilterOptions.Designer.cs">
-      <DependentUpon>GrayFilterOptions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Filters\NegativeFilter.cs" />
-    <Compile Include="Filters\ResizeFilter.cs" />
-    <Compile Include="Filters\FilterOptionsControls\ResizeFilterOptions.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Filters\FilterOptionsControls\ResizeFilterOptions.Designer.cs">
-      <DependentUpon>ResizeFilterOptions.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PointBitmap.cs" />
-    <Compile Include="LockBitmap.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,23 +94,28 @@
     <Compile Include="HttpUtils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Filters\FilterOptionsControls\BinarizationFilterOptions.resx">
+    <EmbeddedResource Include="FilterOptionsControls\BinarizationFilterOptions.resx">
       <DependentUpon>BinarizationFilterOptions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Filters\FilterOptionsControls\CharRebuildFilterOptions.resx">
+    <EmbeddedResource Include="FilterOptionsControls\CharRebuildFilterOptions.resx">
       <DependentUpon>CharRebuildFilterOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Filters\FilterOptionsControls\GrayFilterOptions.resx">
+    <EmbeddedResource Include="FilterOptionsControls\GrayFilterOptions.resx">
       <DependentUpon>GrayFilterOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Filters\FilterOptionsControls\RemoveFrameFilterOptions.resx">
+    <EmbeddedResource Include="FilterOptionsControls\RemoveFrameFilterOptions.resx">
       <DependentUpon>RemoveFrameFilterOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Filters\FilterOptionsControls\ResizeFilterOptions.resx">
+    <EmbeddedResource Include="FilterOptionsControls\ResizeFilterOptions.resx">
       <DependentUpon>ResizeFilterOptions.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -194,6 +185,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OcrPreprocessorLib\OcrPreprocessorLib.csproj">
+      <Project>{3f2ba742-3672-46c9-9970-7b61b078c583}</Project>
+      <Name>OcrPreprocessorLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
