@@ -7,8 +7,8 @@ namespace OcrPreprocessorLib.Preprocessor.Filters
     public class CorrodeFilter : IFilter
     {
         public string Id => "Corrode";
-        public string Name => "»G»k";
-        public string Description => "±N¶ÂÂIÅÜ²Ó¡A¤E®æ¤¤¦³¥ÕÂI´NÅÜ²Ó";
+        public string Name => "corrosion"; //è…è•
+        public string Description => "Thinning the black dots, and the white spots in the nine grids become thinner"; //å°‡é»‘é»è®Šç´°ï¼Œä¹æ ¼ä¸­æœ‰ç™½é»å°±è®Šç´°
 
         public Bitmap Apply(Bitmap bitmap)
         {

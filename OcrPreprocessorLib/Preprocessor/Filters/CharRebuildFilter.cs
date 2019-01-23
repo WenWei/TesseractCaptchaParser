@@ -9,8 +9,8 @@ namespace OcrPreprocessorLib.Preprocessor.Filters
     public class CharRebuildFilter : IFilter
     {
         public string Id => "CharRebuild";
-        public string Name => "字元切割";
-        public string Description => "字元切割後重建新圖";
+        public string Name => "CharRebuild"; //字元切割
+        public string Description => "Split char";//字元切割後重建新圖
         public List<Rectangle> Rectangles { get; set; }
         public int Space { get; set; }
         public Margins Margin { get; set; }

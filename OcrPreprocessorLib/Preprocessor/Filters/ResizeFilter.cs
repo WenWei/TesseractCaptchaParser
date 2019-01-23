@@ -7,8 +7,8 @@ namespace OcrPreprocessorLib.Preprocessor.Filters
     public class ResizeFilter : IFilter
     {
         public string Id => "Resize";
-        public string Name => "調整大小";
-        public string Description => "改變圖檔大小";
+        public string Name => "Adjust image size";//調整大小
+        public string Description => "Adjust image size"; //改變圖檔大小
         public Size Size { get; set; }
 
         public ResizeFilter()

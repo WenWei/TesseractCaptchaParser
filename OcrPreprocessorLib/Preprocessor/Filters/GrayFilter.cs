@@ -5,7 +5,7 @@ using OcrPreprocessorLib.Preprocessor.Models;
 namespace OcrPreprocessorLib.Preprocessor.Filters
 {
     /// <summary>
-    /// ¦Ç¶¥
+    /// Grayscale
     /// </summary>
     [Serializable()]
     public class GrayFilter : IFilter
@@ -13,8 +13,8 @@ namespace OcrPreprocessorLib.Preprocessor.Filters
         public GrayAlgorithmTypes Type { get; set; }
 
         public string Id => "Gray";
-        public string Name => "¦Ç¶¥¤Æ";
-        public string Description => "±N±m¦âÂà¬°¶Â¥Õ";
+        public string Name => "Grayscale"; //ç°éšåŒ–
+        public string Description => "Convert RGB to grayscale";// å°‡å½©è‰²è½‰ç‚ºç°éš
 
         public GrayFilter()
         {

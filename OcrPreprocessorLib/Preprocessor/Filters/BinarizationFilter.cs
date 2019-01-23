@@ -4,14 +4,14 @@ using System.Drawing;
 namespace OcrPreprocessorLib.Preprocessor.Filters
 {
     /// <summary>
-    /// 黑白
+    /// Grayscale to black and white
     /// </summary>
     [Serializable()]
     public class BinarizationFilter : IFilter
     {
         public string Id => "Binarization";
-        public string Name => "二值化";
-        public string Description => "將灰階色轉為黑白";
+        public string Name => "Binarization"; //二值化
+        public string Description => "Grayscale to black and white"; //將灰階色轉為黑白
 
         private int _threshold = 128;
         public int Threshold

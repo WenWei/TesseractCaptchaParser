@@ -8,7 +8,7 @@ namespace OcrPreprocessorLib.Preprocessor.Filters
     public class NoiseFilter : IFilter
     {
         public string Id => "Noise";
-        public string Name => "去除雜訊";
+        public string Name => "Reduce noise"; //降雜訊
         public string Description => "";
 
         public Bitmap Apply(Bitmap bitmap)

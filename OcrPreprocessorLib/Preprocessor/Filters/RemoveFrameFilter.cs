@@ -10,8 +10,8 @@ namespace OcrPreprocessorLib.Preprocessor.Filters
 
         public string Id => "RemoveFrame";
 
-        public string Name => "移除邊框";
-        public string Description => "移除邊 左上右下";
+        public string Name => "Remove Frame"; //移除邊框
+        public string Description => "Remove border (left, top, right, bottom)"; //移除邊 左上右下
         public Paddings Padding { get; set; }
         public Color Color { get; set; }
 

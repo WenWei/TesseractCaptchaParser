@@ -10,8 +10,8 @@ namespace OcrPreprocessorLib.Preprocessor.Filters
     public class ExpendFilter : IFilter
     {
         public string Id => "Expend";
-        public string Name => "膨脹";
-        public string Description => "將黑點變粗，九格中有黑點就變粗";
+        public string Name => "Expend"; //膨脹
+        public string Description => "Thicken the black dots and thicken them with black spots in the nine grids."; //將黑點變粗，九格中有黑點就變粗
 
         public Bitmap Apply(Bitmap bitmap)
         {
