@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace OcrPreprocessorLib.Preprocessor.Filters
 {
-    [Serializable()]
+    [Serializable]
     public class NoiseFilter : IFilter
     {
         public string Id => "Noise";

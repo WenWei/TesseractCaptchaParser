@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace OcrPreprocessorLib.Preprocessor.Filters
 {
-    [Serializable()]
+    [Serializable]
     public class CorrodeFilter : IFilter
     {
         public string Id => "Corrode";

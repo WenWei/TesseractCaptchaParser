@@ -7,7 +7,7 @@ namespace OcrPreprocessorLib.Preprocessor.Filters
     /// <summary>
     /// Grayscale
     /// </summary>
-    [Serializable()]
+    [Serializable]
     public class GrayFilter : IFilter
     {
         public GrayAlgorithmTypes Type { get; set; }

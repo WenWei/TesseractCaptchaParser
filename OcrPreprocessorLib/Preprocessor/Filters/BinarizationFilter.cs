@@ -6,7 +6,7 @@ namespace OcrPreprocessorLib.Preprocessor.Filters
     /// <summary>
     /// Grayscale to black and white
     /// </summary>
-    [Serializable()]
+    [Serializable]
     public class BinarizationFilter : IFilter
     {
         public string Id => "Binarization";

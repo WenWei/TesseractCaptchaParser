@@ -2,7 +2,7 @@
 
 namespace OcrPreprocessorLib.Preprocessor.Models
 {
-    [Serializable()]
+    [Serializable]
     public abstract class Frame
     {
         public int Left { get; set; }

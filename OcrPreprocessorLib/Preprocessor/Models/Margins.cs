@@ -2,7 +2,7 @@
 
 namespace OcrPreprocessorLib.Preprocessor.Models
 {
-    [Serializable()]
+    [Serializable]
     public class Margins:Frame
     {
     }

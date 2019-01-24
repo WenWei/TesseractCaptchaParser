@@ -4,7 +4,7 @@ using OcrPreprocessorLib.Preprocessor.Models;
 
 namespace OcrPreprocessorLib.Preprocessor.Filters
 {
-    [Serializable()]
+    [Serializable]
     public class RemoveFrameFilter : IFilter
     {
 

@@ -6,7 +6,7 @@ namespace OcrPreprocessorLib.Preprocessor.Filters
     /// <summary>
     /// 膨脹
     /// </summary>
-    [Serializable()]
+    [Serializable]
     public class ExpendFilter : IFilter
     {
         public string Id => "Expend";

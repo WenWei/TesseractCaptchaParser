@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace OcrPreprocessorLib.Preprocessor.Filters
 {
-    [Serializable()]
+    [Serializable]
     public class ResizeFilter : IFilter
     {
         public string Id => "Resize";

@@ -3,15 +3,15 @@ namespace OcrPreprocessorLib.Preprocessor.Models
     public enum GrayAlgorithmTypes
     {
         /// <summary>
-        /// ¥­§¡­Èªk
+        /// å¹³å‡å€¼æ³•
         /// </summary>
         Average,
         /// <summary>
-        /// ³Ì¤j­Èªk
+        /// æœ€å¤§å€¼æ³•
         /// </summary>
         Maximum,
         /// <summary>
-        /// ¥[Åv¥­§¡ªk
+        /// åŠ æ¬Šå¹³å‡æ³•
         /// </summary>
         WeightedAverage
     }
