@@ -1,79 +1,50 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Runtime.InteropServices;
 
 namespace OcrPreprocessorLib.Preprocessor
 {
-    /// <summary>
-    /// http://www.cnblogs.com/bomo/archive/2013/02/26/2934055.html
-    /// </summary>
-    /// <example>
-    /// string file = @"C:\test.jpg";
-    /// Bitmap bmp = new Bitmap(Image.FromFile(file));
-    /// LockBitmap lockbmp = new LockBitmap(bmp);
-    /// lockbmp.LockBits();
-    /// Color color = lockbmp.GetPixel(10, 10);
-    /// lockbmp.UnlockBits();
-    /// </example>
-    public class LockBitmap
+    public class LockBitmap : IDisposable
     {
-        Bitmap source = null;
-        IntPtr Iptr = IntPtr.Zero;
-        BitmapData bitmapData = null;
+        private readonly Bitmap _bitmap;
+        private readonly int _width;
+        private readonly int _height;
+        private readonly Rectangle _rect;
+        private readonly PixelFormat _pixelFormat;
+        private BitmapData _bitmapData;
+        private IntPtr _ptr;
+        private int _length;
+        private byte[] _values;
+        private readonly int _depth;
+        private readonly int _colorLength;
 
-        public byte[] Pixels { get; set; }
-        public int Depth { get; private set; }
-        public int Width { get; private set; }
-        public int Height { get; private set; }
+        public bool IsModify { get; private set; }
 
-        public LockBitmap(Bitmap source)
+        public LockBitmap(Bitmap bitmap)
         {
-            this.source = source;
+            _bitmap = bitmap;
+            _width = _bitmap.Width;
+            _height = _bitmap.Height;
+            _rect = new Rectangle(0, 0, _width, _height);
+            _pixelFormat = _bitmap.PixelFormat;
+            _depth = Bitmap.GetPixelFormatSize(_bitmap.PixelFormat);
+            _colorLength = _depth / 8;
+            IsModify = false;
         }
 
-        /// <summary>
-        /// Lock bitmap data
-        /// </summary>
         public void LockBits()
         {
-            try
+            // Check if bpp (Bits Per Pixel) is 8, 24, or 32
+            if (_depth != 8 && _depth != 24 && _depth != 32)
             {
-                // Get width and height of bitmap
-                Width = source.Width;
-                Height = source.Height;
-
-                // get total locked pixels count
-                int PixelCount = Width*Height;
-
-                // Create rectangle to lock
-                Rectangle rect = new Rectangle(0, 0, Width, Height);
-
-                // get source bitmap pixel format size
-                Depth = System.Drawing.Bitmap.GetPixelFormatSize(source.PixelFormat);
-
-                // Check if bpp (Bits Per Pixel) is 8, 24, or 32
-                if (Depth != 8 && Depth != 24 && Depth != 32)
-                {
-                    throw new ArgumentException("Only 8, 24 and 32 bpp images are supported.");
-                }
-
-                // Lock bitmap and return bitmap data
-                bitmapData = source.LockBits(rect, ImageLockMode.ReadWrite,
-                    source.PixelFormat);
-
-                // create byte array to copy pixel values
-                int step = Depth/8;
-                Pixels = new byte[PixelCount*step];
-                Iptr = bitmapData.Scan0;
-
-                // Copy data from pointer to array
-                Marshal.Copy(Iptr, Pixels, 0, Pixels.Length);
+                throw new ArgumentException("Only 8, 24 and 32 bpp images are supported.");
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+
+            _bitmapData = _bitmap.LockBits(_rect, ImageLockMode.ReadWrite, _pixelFormat);
+            _ptr = _bitmapData.Scan0;
+            _length = _bitmapData.Stride * _height;
+            _values = new byte[_length];
+            System.Runtime.InteropServices.Marshal.Copy(_ptr, _values, 0, _length);
         }
 
         /// <summary>
@@ -81,18 +52,12 @@ namespace OcrPreprocessorLib.Preprocessor
         /// </summary>
         public void UnlockBits()
         {
-            try
+            if (IsModify)
             {
                 // Copy data from byte array to pointer
-                Marshal.Copy(Pixels, 0, Iptr, Pixels.Length);
-
-                // Unlock bitmap data
-                source.UnlockBits(bitmapData);
+                System.Runtime.InteropServices.Marshal.Copy(_values, 0, _ptr, _length);
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            _bitmap.UnlockBits(_bitmapData);
         }
 
         /// <summary>
@@ -103,39 +68,38 @@ namespace OcrPreprocessorLib.Preprocessor
         /// <returns></returns>
         public Color GetPixel(int x, int y)
         {
-            Color clr = Color.Empty;
+            int k = _colorLength * x;
+            int pos = y * _bitmapData.Stride + k;
+            Color color = Color.Empty;
 
-            // Get color components count
-            int cCount = Depth/8;
-
-            // Get start index of the specified pixel
-            int i = ((y*Width) + x)*cCount;
-
-            if (i > Pixels.Length - cCount)
+            if (pos > _values.Length - _colorLength)
                 throw new IndexOutOfRangeException();
+            byte b, g, r, a;
+            switch (_depth)
+            {
+                case 32:
+                    // For 32 bpp get Red, Green, Blue and Alpha
+                    b = _values[pos];
+                    g = _values[pos + 1];
+                    r = _values[pos + 2];
+                    a = _values[pos + 3];
+                    color = Color.FromArgb(a, r, g, b);
+                    break;
+                case 24:
+                    // For 24 bpp get Red, Green and Blue
+                    b = _values[pos];
+                    g = _values[pos + 1];
+                    r = _values[pos + 2];
+                    color = Color.FromArgb(r, g, b);
+                    break;
+                case 8:
+                    // For 8 bpp get color value (Red, Green and Blue values are the same)
+                    b = _values[pos];
+                    color = Color.FromArgb(b,b,b);
+                    break;
+            }
 
-            if (Depth == 32) // For 32 bpp get Red, Green, Blue and Alpha
-            {
-                byte b = Pixels[i];
-                byte g = Pixels[i + 1];
-                byte r = Pixels[i + 2];
-                byte a = Pixels[i + 3]; // a
-                clr = Color.FromArgb(a, r, g, b);
-            }
-            if (Depth == 24) // For 24 bpp get Red, Green and Blue
-            {
-                byte b = Pixels[i];
-                byte g = Pixels[i + 1];
-                byte r = Pixels[i + 2];
-                clr = Color.FromArgb(r, g, b);
-            }
-            if (Depth == 8)
-                // For 8 bpp get color value (Red, Green and Blue values are the same)
-            {
-                byte c = Pixels[i];
-                clr = Color.FromArgb(c, c, c);
-            }
-            return clr;
+            return color;
         }
 
         /// <summary>
@@ -146,30 +110,36 @@ namespace OcrPreprocessorLib.Preprocessor
         /// <param name="color"></param>
         public void SetPixel(int x, int y, Color color)
         {
-            // Get color components count
-            int cCount = Depth/8;
+            int k = _colorLength * x;
+            int pos = y * _bitmapData.Stride + k;
+            switch (_depth)
+            {
+                case 32:
+                    // For 32 bpp set Red, Green, Blue and Alpha
+                    _values[pos] = color.B;
+                    _values[pos + 1] = color.G;
+                    _values[pos + 2] = color.R;
+                    _values[pos + 3] = color.A;
+                    break;
+                case 24:
+                    // For 24 bpp set Red, Green and Blue
+                    _values[pos] = color.B;
+                    _values[pos + 1] = color.G;
+                    _values[pos + 2] = color.R;
+                    break;
+                case 8:
+                    // For 8 bpp set color value (Red, Green and Blue values are the same)
+                    _values[pos] = color.B;
+                    break;
+            }
 
-            // Get start index of the specified pixel
-            int i = ((y*Width) + x)*cCount;
+            IsModify = true;
+        }
 
-            if (Depth == 32) // For 32 bpp set Red, Green, Blue and Alpha
-            {
-                Pixels[i] = color.B;
-                Pixels[i + 1] = color.G;
-                Pixels[i + 2] = color.R;
-                Pixels[i + 3] = color.A;
-            }
-            if (Depth == 24) // For 24 bpp set Red, Green and Blue
-            {
-                Pixels[i] = color.B;
-                Pixels[i + 1] = color.G;
-                Pixels[i + 2] = color.R;
-            }
-            if (Depth == 8)
-                // For 8 bpp set color value (Red, Green and Blue values are the same)
-            {
-                Pixels[i] = color.B;
-            }
+        public void Dispose()
+        {
+            _bitmap?.Dispose();
+            UnlockBits();
         }
     }
 }
