@@ -133,7 +133,7 @@ namespace OcrPreprocessorLib.Preprocessor
         {
             int height = bmp.Height;
             int width = bmp.Width;
-            Bitmap newbmp = new Bitmap(width, height);
+            Bitmap newbmp = new Bitmap(width, height, PixelFormat.Format24bppRgb);
 
             LockBitmap lbmp = new LockBitmap(bmp);
             LockBitmap newlbmp = new LockBitmap(newbmp);

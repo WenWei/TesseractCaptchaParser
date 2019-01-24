@@ -103,7 +103,7 @@ namespace ImageToGrayscale
 
             using(var engine = new TesseractEngine(@"./tessdata", "eng", EngineMode.Default))
             {
-                engine.SetVariable("tessedit_char_whitelist", "0123456789");
+                engine.SetVariable("tessedit_char_whitelist", textBoxCharacters.Text);
 
                 using(var page = engine.Process(bitmap, PageSegMode.SingleWord))
                 {

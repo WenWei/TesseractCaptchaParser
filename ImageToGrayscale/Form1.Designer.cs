@@ -64,6 +64,8 @@
             this.pictureBoxApplyFilters = new System.Windows.Forms.PictureBox();
             this.btnApplyFilters = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBoxCharacters = new System.Windows.Forms.TextBox();
+            this.labelCharacters = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRaw)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panelRaw.SuspendLayout();
@@ -81,10 +83,9 @@
             // 
             // btnDownloadImage
             // 
-            this.btnDownloadImage.Location = new System.Drawing.Point(958, 42);
-            this.btnDownloadImage.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnDownloadImage.Location = new System.Drawing.Point(442, 23);
             this.btnDownloadImage.Name = "btnDownloadImage";
-            this.btnDownloadImage.Size = new System.Drawing.Size(163, 46);
+            this.btnDownloadImage.Size = new System.Drawing.Size(75, 25);
             this.btnDownloadImage.TabIndex = 0;
             this.btnDownloadImage.Text = "Download Image";
             this.btnDownloadImage.UseVisualStyleBackColor = true;
@@ -92,29 +93,26 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(95, 42);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.textBox1.Location = new System.Drawing.Point(44, 23);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(821, 36);
+            this.textBox1.Size = new System.Drawing.Size(381, 20);
             this.textBox1.TabIndex = 1;
             // 
             // lblUrl
             // 
             this.lblUrl.AutoSize = true;
-            this.lblUrl.Location = new System.Drawing.Point(26, 48);
-            this.lblUrl.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lblUrl.Location = new System.Drawing.Point(12, 26);
             this.lblUrl.Name = "lblUrl";
-            this.lblUrl.Size = new System.Drawing.Size(61, 24);
+            this.lblUrl.Size = new System.Drawing.Size(32, 13);
             this.lblUrl.TabIndex = 2;
             this.lblUrl.Text = "URL:";
             // 
             // pictureBoxRaw
             // 
             this.pictureBoxRaw.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxRaw.Location = new System.Drawing.Point(22, 8);
-            this.pictureBoxRaw.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.pictureBoxRaw.Location = new System.Drawing.Point(7, 6);
             this.pictureBoxRaw.Name = "pictureBoxRaw";
-            this.pictureBoxRaw.Size = new System.Drawing.Size(251, 88);
+            this.pictureBoxRaw.Size = new System.Drawing.Size(117, 49);
             this.pictureBoxRaw.TabIndex = 2;
             this.pictureBoxRaw.TabStop = false;
             this.pictureBoxRaw.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxRaw_Paint);
@@ -126,19 +124,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 118);
-            this.label1.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label1.Location = new System.Drawing.Point(6, 64);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 24);
+            this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Origin:";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(204, 52);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnSave.Location = new System.Drawing.Point(94, 28);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(178, 46);
+            this.btnSave.Size = new System.Drawing.Size(82, 25);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -146,10 +142,9 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(1133, 42);
-            this.btnOpen.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnOpen.Location = new System.Drawing.Point(523, 23);
             this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(163, 46);
+            this.btnOpen.Size = new System.Drawing.Size(75, 25);
             this.btnOpen.TabIndex = 4;
             this.btnOpen.Text = "Open";
             this.btnOpen.UseVisualStyleBackColor = true;
@@ -165,11 +160,9 @@
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.lblUrl);
             this.groupBox1.Controls.Add(this.btnOpen);
-            this.groupBox1.Location = new System.Drawing.Point(26, 24);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.groupBox1.Location = new System.Drawing.Point(12, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.groupBox1.Size = new System.Drawing.Size(1655, 176);
+            this.groupBox1.Size = new System.Drawing.Size(912, 95);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Step 1. Open Image File";
@@ -178,29 +171,27 @@
             // 
             this.panelRaw.AutoScroll = true;
             this.panelRaw.Controls.Add(this.pictureBoxRaw);
-            this.panelRaw.Location = new System.Drawing.Point(1304, 40);
-            this.panelRaw.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.panelRaw.Location = new System.Drawing.Point(602, 22);
+            this.panelRaw.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.panelRaw.Name = "panelRaw";
-            this.panelRaw.Size = new System.Drawing.Size(312, 122);
+            this.panelRaw.Size = new System.Drawing.Size(293, 66);
             this.panelRaw.TabIndex = 7;
             // 
             // lblHeight
             // 
             this.lblHeight.AutoSize = true;
-            this.lblHeight.Location = new System.Drawing.Point(297, 118);
-            this.lblHeight.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lblHeight.Location = new System.Drawing.Point(137, 64);
             this.lblHeight.Name = "lblHeight";
-            this.lblHeight.Size = new System.Drawing.Size(70, 24);
+            this.lblHeight.Size = new System.Drawing.Size(38, 13);
             this.lblHeight.TabIndex = 6;
             this.lblHeight.Text = "Height";
             // 
             // lblWidth
             // 
             this.lblWidth.AutoSize = true;
-            this.lblWidth.Location = new System.Drawing.Point(108, 118);
-            this.lblWidth.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lblWidth.Location = new System.Drawing.Point(50, 64);
             this.lblWidth.Name = "lblWidth";
-            this.lblWidth.Size = new System.Drawing.Size(65, 24);
+            this.lblWidth.Size = new System.Drawing.Size(35, 13);
             this.lblWidth.TabIndex = 5;
             this.lblWidth.Text = "Width";
             // 
@@ -216,21 +207,18 @@
             this.groupBox2.Controls.Add(this.buttonAddFilter);
             this.groupBox2.Controls.Add(this.cmbFilter);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(26, 212);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.groupBox2.Location = new System.Drawing.Point(12, 115);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.groupBox2.Size = new System.Drawing.Size(1369, 856);
+            this.groupBox2.Size = new System.Drawing.Size(632, 464);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Step 2. Add filters";
             // 
             // btnLoadFilters
             // 
-            this.btnLoadFilters.Location = new System.Drawing.Point(559, 482);
-            this.btnLoadFilters.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnLoadFilters.Location = new System.Drawing.Point(258, 261);
             this.btnLoadFilters.Name = "btnLoadFilters";
-            this.btnLoadFilters.Size = new System.Drawing.Size(182, 46);
+            this.btnLoadFilters.Size = new System.Drawing.Size(84, 25);
             this.btnLoadFilters.TabIndex = 14;
             this.btnLoadFilters.Text = "Load";
             this.btnLoadFilters.UseVisualStyleBackColor = true;
@@ -238,10 +226,9 @@
             // 
             // btnSaveFilters
             // 
-            this.btnSaveFilters.Location = new System.Drawing.Point(561, 422);
-            this.btnSaveFilters.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnSaveFilters.Location = new System.Drawing.Point(259, 229);
             this.btnSaveFilters.Name = "btnSaveFilters";
-            this.btnSaveFilters.Size = new System.Drawing.Size(182, 46);
+            this.btnSaveFilters.Size = new System.Drawing.Size(84, 25);
             this.btnSaveFilters.TabIndex = 13;
             this.btnSaveFilters.Text = "Save";
             this.btnSaveFilters.UseVisualStyleBackColor = true;
@@ -249,10 +236,9 @@
             // 
             // btnMoveDown
             // 
-            this.btnMoveDown.Location = new System.Drawing.Point(561, 232);
-            this.btnMoveDown.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnMoveDown.Location = new System.Drawing.Point(259, 126);
             this.btnMoveDown.Name = "btnMoveDown";
-            this.btnMoveDown.Size = new System.Drawing.Size(182, 46);
+            this.btnMoveDown.Size = new System.Drawing.Size(84, 25);
             this.btnMoveDown.TabIndex = 12;
             this.btnMoveDown.Text = "Move Down";
             this.btnMoveDown.UseVisualStyleBackColor = true;
@@ -260,10 +246,9 @@
             // 
             // btnMoveUp
             // 
-            this.btnMoveUp.Location = new System.Drawing.Point(561, 174);
-            this.btnMoveUp.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnMoveUp.Location = new System.Drawing.Point(259, 94);
             this.btnMoveUp.Name = "btnMoveUp";
-            this.btnMoveUp.Size = new System.Drawing.Size(182, 46);
+            this.btnMoveUp.Size = new System.Drawing.Size(84, 25);
             this.btnMoveUp.TabIndex = 11;
             this.btnMoveUp.Text = "Move Up";
             this.btnMoveUp.UseVisualStyleBackColor = true;
@@ -272,18 +257,16 @@
             // filterOptionPanel
             // 
             this.filterOptionPanel.AutoScroll = true;
-            this.filterOptionPanel.Location = new System.Drawing.Point(756, 58);
-            this.filterOptionPanel.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.filterOptionPanel.Location = new System.Drawing.Point(349, 31);
             this.filterOptionPanel.Name = "filterOptionPanel";
-            this.filterOptionPanel.Size = new System.Drawing.Size(600, 786);
+            this.filterOptionPanel.Size = new System.Drawing.Size(277, 426);
             this.filterOptionPanel.TabIndex = 10;
             // 
             // btnRemoveFilter
             // 
-            this.btnRemoveFilter.Location = new System.Drawing.Point(561, 116);
-            this.btnRemoveFilter.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnRemoveFilter.Location = new System.Drawing.Point(259, 63);
             this.btnRemoveFilter.Name = "btnRemoveFilter";
-            this.btnRemoveFilter.Size = new System.Drawing.Size(182, 46);
+            this.btnRemoveFilter.Size = new System.Drawing.Size(84, 25);
             this.btnRemoveFilter.TabIndex = 9;
             this.btnRemoveFilter.Text = "Remove";
             this.btnRemoveFilter.UseVisualStyleBackColor = true;
@@ -293,20 +276,17 @@
             // 
             this.listBoxFilter.DisplayMember = "Name";
             this.listBoxFilter.FormattingEnabled = true;
-            this.listBoxFilter.ItemHeight = 24;
-            this.listBoxFilter.Location = new System.Drawing.Point(41, 112);
-            this.listBoxFilter.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.listBoxFilter.Location = new System.Drawing.Point(19, 61);
             this.listBoxFilter.Name = "listBoxFilter";
-            this.listBoxFilter.Size = new System.Drawing.Size(502, 724);
+            this.listBoxFilter.Size = new System.Drawing.Size(234, 394);
             this.listBoxFilter.TabIndex = 8;
             this.listBoxFilter.SelectedIndexChanged += new System.EventHandler(this.listBoxFilter_SelectedIndexChanged);
             // 
             // buttonAddFilter
             // 
-            this.buttonAddFilter.Location = new System.Drawing.Point(561, 58);
-            this.buttonAddFilter.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.buttonAddFilter.Location = new System.Drawing.Point(259, 31);
             this.buttonAddFilter.Name = "buttonAddFilter";
-            this.buttonAddFilter.Size = new System.Drawing.Size(182, 46);
+            this.buttonAddFilter.Size = new System.Drawing.Size(84, 25);
             this.buttonAddFilter.TabIndex = 7;
             this.buttonAddFilter.Text = "Add";
             this.buttonAddFilter.UseVisualStyleBackColor = true;
@@ -315,28 +295,26 @@
             // cmbFilter
             // 
             this.cmbFilter.FormattingEnabled = true;
-            this.cmbFilter.Location = new System.Drawing.Point(128, 58);
-            this.cmbFilter.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.cmbFilter.Location = new System.Drawing.Point(59, 31);
             this.cmbFilter.Name = "cmbFilter";
-            this.cmbFilter.Size = new System.Drawing.Size(416, 32);
+            this.cmbFilter.Size = new System.Drawing.Size(194, 21);
             this.cmbFilter.TabIndex = 6;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 64);
-            this.label4.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.label4.Location = new System.Drawing.Point(17, 35);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 24);
+            this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 5;
             this.label4.Text = "Filters:";
             // 
             // btnParseRegions
             // 
-            this.btnParseRegions.Location = new System.Drawing.Point(13, 40);
-            this.btnParseRegions.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.btnParseRegions.Location = new System.Drawing.Point(6, 22);
+            this.btnParseRegions.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnParseRegions.Name = "btnParseRegions";
-            this.btnParseRegions.Size = new System.Drawing.Size(254, 46);
+            this.btnParseRegions.Size = new System.Drawing.Size(117, 25);
             this.btnParseRegions.TabIndex = 14;
             this.btnParseRegions.Text = "Parse Regions";
             this.btnParseRegions.UseVisualStyleBackColor = true;
@@ -344,18 +322,18 @@
             // 
             // textBoxRegions
             // 
-            this.textBoxRegions.Location = new System.Drawing.Point(280, 40);
-            this.textBoxRegions.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.textBoxRegions.Location = new System.Drawing.Point(129, 22);
+            this.textBoxRegions.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.textBoxRegions.Name = "textBoxRegions";
-            this.textBoxRegions.Size = new System.Drawing.Size(247, 36);
+            this.textBoxRegions.Size = new System.Drawing.Size(116, 20);
             this.textBoxRegions.TabIndex = 15;
             // 
             // btnParse
             // 
-            this.btnParse.Location = new System.Drawing.Point(13, 52);
-            this.btnParse.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.btnParse.Location = new System.Drawing.Point(6, 42);
+            this.btnParse.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.btnParse.Name = "btnParse";
-            this.btnParse.Size = new System.Drawing.Size(319, 46);
+            this.btnParse.Size = new System.Drawing.Size(251, 25);
             this.btnParse.TabIndex = 12;
             this.btnParse.Text = "Parse";
             this.btnParse.UseVisualStyleBackColor = true;
@@ -363,22 +341,22 @@
             // 
             // textBoxParse
             // 
-            this.textBoxParse.Location = new System.Drawing.Point(336, 52);
-            this.textBoxParse.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.textBoxParse.Location = new System.Drawing.Point(7, 70);
+            this.textBoxParse.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
             this.textBoxParse.Name = "textBoxParse";
-            this.textBoxParse.Size = new System.Drawing.Size(216, 36);
+            this.textBoxParse.Size = new System.Drawing.Size(250, 20);
             this.textBoxParse.TabIndex = 13;
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.labelCharacters);
+            this.groupBox5.Controls.Add(this.textBoxCharacters);
             this.groupBox5.Controls.Add(this.pictureBoxRegion);
             this.groupBox5.Controls.Add(this.btnParse);
             this.groupBox5.Controls.Add(this.textBoxParse);
-            this.groupBox5.Location = new System.Drawing.Point(1408, 582);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.groupBox5.Location = new System.Drawing.Point(650, 315);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.groupBox5.Size = new System.Drawing.Size(594, 358);
+            this.groupBox5.Size = new System.Drawing.Size(274, 264);
             this.groupBox5.TabIndex = 16;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Step 4. Recognition";
@@ -386,50 +364,45 @@
             // pictureBoxRegion
             // 
             this.pictureBoxRegion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxRegion.Location = new System.Drawing.Point(13, 112);
-            this.pictureBoxRegion.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.pictureBoxRegion.Location = new System.Drawing.Point(6, 95);
             this.pictureBoxRegion.Name = "pictureBoxRegion";
-            this.pictureBoxRegion.Size = new System.Drawing.Size(542, 222);
+            this.pictureBoxRegion.Size = new System.Drawing.Size(251, 160);
             this.pictureBoxRegion.TabIndex = 8;
             this.pictureBoxRegion.TabStop = false;
             // 
             // pictureBoxRegionItem0
             // 
             this.pictureBoxRegionItem0.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxRegionItem0.Location = new System.Drawing.Point(15, 120);
-            this.pictureBoxRegionItem0.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.pictureBoxRegionItem0.Location = new System.Drawing.Point(7, 65);
             this.pictureBoxRegionItem0.Name = "pictureBoxRegionItem0";
-            this.pictureBoxRegionItem0.Size = new System.Drawing.Size(117, 140);
+            this.pictureBoxRegionItem0.Size = new System.Drawing.Size(55, 77);
             this.pictureBoxRegionItem0.TabIndex = 17;
             this.pictureBoxRegionItem0.TabStop = false;
             // 
             // pictureBoxRegionItem1
             // 
             this.pictureBoxRegionItem1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxRegionItem1.Location = new System.Drawing.Point(147, 120);
-            this.pictureBoxRegionItem1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.pictureBoxRegionItem1.Location = new System.Drawing.Point(68, 65);
             this.pictureBoxRegionItem1.Name = "pictureBoxRegionItem1";
-            this.pictureBoxRegionItem1.Size = new System.Drawing.Size(117, 140);
+            this.pictureBoxRegionItem1.Size = new System.Drawing.Size(55, 77);
             this.pictureBoxRegionItem1.TabIndex = 18;
             this.pictureBoxRegionItem1.TabStop = false;
             // 
             // pictureBoxRegionItem2
             // 
             this.pictureBoxRegionItem2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxRegionItem2.Location = new System.Drawing.Point(280, 120);
-            this.pictureBoxRegionItem2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.pictureBoxRegionItem2.Location = new System.Drawing.Point(129, 65);
             this.pictureBoxRegionItem2.Name = "pictureBoxRegionItem2";
-            this.pictureBoxRegionItem2.Size = new System.Drawing.Size(117, 140);
+            this.pictureBoxRegionItem2.Size = new System.Drawing.Size(55, 77);
             this.pictureBoxRegionItem2.TabIndex = 19;
             this.pictureBoxRegionItem2.TabStop = false;
             // 
             // pictureBoxRegionItem3
             // 
             this.pictureBoxRegionItem3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxRegionItem3.Location = new System.Drawing.Point(412, 120);
-            this.pictureBoxRegionItem3.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.pictureBoxRegionItem3.Location = new System.Drawing.Point(190, 65);
             this.pictureBoxRegionItem3.Name = "pictureBoxRegionItem3";
-            this.pictureBoxRegionItem3.Size = new System.Drawing.Size(117, 140);
+            this.pictureBoxRegionItem3.Size = new System.Drawing.Size(55, 77);
             this.pictureBoxRegionItem3.TabIndex = 20;
             this.pictureBoxRegionItem3.TabStop = false;
             // 
@@ -438,11 +411,9 @@
             this.groupBox6.Controls.Add(this.pictureBoxApplyFilters);
             this.groupBox6.Controls.Add(this.btnApplyFilters);
             this.groupBox6.Controls.Add(this.btnSave);
-            this.groupBox6.Location = new System.Drawing.Point(1408, 212);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.groupBox6.Location = new System.Drawing.Point(650, 115);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.groupBox6.Size = new System.Drawing.Size(594, 358);
+            this.groupBox6.Size = new System.Drawing.Size(274, 194);
             this.groupBox6.TabIndex = 21;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Step 3. Apply filters";
@@ -450,19 +421,17 @@
             // pictureBoxApplyFilters
             // 
             this.pictureBoxApplyFilters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxApplyFilters.Location = new System.Drawing.Point(13, 112);
-            this.pictureBoxApplyFilters.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.pictureBoxApplyFilters.Location = new System.Drawing.Point(6, 61);
             this.pictureBoxApplyFilters.Name = "pictureBoxApplyFilters";
-            this.pictureBoxApplyFilters.Size = new System.Drawing.Size(535, 222);
+            this.pictureBoxApplyFilters.Size = new System.Drawing.Size(251, 121);
             this.pictureBoxApplyFilters.TabIndex = 9;
             this.pictureBoxApplyFilters.TabStop = false;
             // 
             // btnApplyFilters
             // 
-            this.btnApplyFilters.Location = new System.Drawing.Point(13, 52);
-            this.btnApplyFilters.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btnApplyFilters.Location = new System.Drawing.Point(6, 28);
             this.btnApplyFilters.Name = "btnApplyFilters";
-            this.btnApplyFilters.Size = new System.Drawing.Size(178, 46);
+            this.btnApplyFilters.Size = new System.Drawing.Size(82, 25);
             this.btnApplyFilters.TabIndex = 8;
             this.btnApplyFilters.Text = "Apply Filters";
             this.btnApplyFilters.UseVisualStyleBackColor = true;
@@ -476,28 +445,43 @@
             this.groupBox3.Controls.Add(this.pictureBoxRegionItem3);
             this.groupBox3.Controls.Add(this.textBoxRegions);
             this.groupBox3.Controls.Add(this.pictureBoxRegionItem2);
-            this.groupBox3.Location = new System.Drawing.Point(1408, 952);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.groupBox3.Location = new System.Drawing.Point(656, 585);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.groupBox3.Size = new System.Drawing.Size(594, 302);
+            this.groupBox3.Size = new System.Drawing.Size(274, 164);
             this.groupBox3.TabIndex = 22;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Step 4. Recognition";
             this.groupBox3.Visible = false;
             // 
+            // textBoxCharacters
+            // 
+            this.textBoxCharacters.Location = new System.Drawing.Point(71, 18);
+            this.textBoxCharacters.Margin = new System.Windows.Forms.Padding(1, 2, 1, 2);
+            this.textBoxCharacters.Name = "textBoxCharacters";
+            this.textBoxCharacters.Size = new System.Drawing.Size(186, 20);
+            this.textBoxCharacters.TabIndex = 14;
+            this.textBoxCharacters.Text = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-";
+            // 
+            // labelCharacters
+            // 
+            this.labelCharacters.AutoSize = true;
+            this.labelCharacters.Location = new System.Drawing.Point(6, 21);
+            this.labelCharacters.Name = "labelCharacters";
+            this.labelCharacters.Size = new System.Drawing.Size(61, 13);
+            this.labelCharacters.TabIndex = 15;
+            this.labelCharacters.Text = "Characters:";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2039, 1102);
+            this.ClientSize = new System.Drawing.Size(936, 587);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "Form1";
             this.Text = "OCR";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -560,6 +544,8 @@
         private System.Windows.Forms.Button btnLoadFilters;
         private System.Windows.Forms.Button btnSaveFilters;
         private System.Windows.Forms.Panel panelRaw;
+        private System.Windows.Forms.Label labelCharacters;
+        private System.Windows.Forms.TextBox textBoxCharacters;
     }
 }
 
